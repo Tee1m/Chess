@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Chess.Board;
 namespace Chess.Pieces
 {
-    abstract class Piece
-    {   
-        protected bool first_move = true;
+    public abstract class Piece
+    {
         public string name;
+        protected bool first_move = true;
         protected string piece_index;
         protected ConsoleColor team_color;
         public ConsoleColor Team_Color { get => team_color; }

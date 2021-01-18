@@ -38,6 +38,7 @@ namespace Chess.Game
             for (int i = 0; i < 8; i++)
             {
                 SetUpDashBoard.Board[row,i].piece=tab[i].piece;
+                
             }
         }
     }

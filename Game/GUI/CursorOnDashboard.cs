@@ -1,5 +1,6 @@
 ﻿using System;
 using Chess.Board;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Game.GUI
 {
@@ -12,7 +13,7 @@ namespace Chess.Game.GUI
         {
             this.dashboard = dashboard;
         }
-        public Dashboard ChosingPiece(string who_play)
+        public Dashboard ChosingPiece(Team team)
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
 
@@ -27,8 +28,6 @@ namespace Chess.Game.GUI
                             dashboard.Board[i, j].color_of_cell = ConsoleColor.DarkYellow;
                         else
                             dashboard.Board[i, j].SetCellColor();
-
-
                     }
                 }
 
@@ -49,7 +48,7 @@ namespace Chess.Game.GUI
 
                 else if (key.Key == ConsoleKey.Enter)
                 {
-                    ConsoleColor color_who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), who_play);
+                    ConsoleColor color_who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), team.team_color);
 
                     if (color_who_play == dashboard.Board[column_pos, row_pos].piece.Team_Color)
                     {

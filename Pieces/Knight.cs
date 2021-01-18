@@ -40,7 +40,6 @@ namespace Chess.Pieces
             {
                 dashboard.Board[pieceFinder.Row_Index + 2, pieceFinder.Column_Index - 1].Next_Legal_Move = true;
             }
-            ////
             if (pieceFinder.Row_Index + 1 < dashboard.column_size && pieceFinder.Column_Index -1 > 0)
             {
                 dashboard.Board[pieceFinder.Row_Index + 1, pieceFinder.Column_Index - 2].Next_Legal_Move = true;

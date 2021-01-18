@@ -14,21 +14,21 @@ namespace Chess.Game
     {   
         Dashboard game;
         CursorOnDashboard CursorDashboard;
-        Team First;
-        Team Second;
+        Team FirstTeam;
+        Team SecondTeam;
         public ChessGame(SetUpGame SetGame)
         {
             game = new Dashboard(8, 8);
             SetGame.SetUpDashboard();
             game.Board = SetGame.SetUpDashboard();
-            First = SetGame.WhiteTeam;
-            Second = SetGame.BlackTeam;
+            FirstTeam = SetGame.WhiteTeam;
+            SecondTeam = SetGame.BlackTeam;
         }
 
         public void StartGame()
         {   
             CursorDashboard = new CursorOnDashboard(game);
-            CursorDashboard.ChosingPiece(First.team_color);
+            CursorDashboard.ChosingPiece(FirstTeam);
             Console.ReadKey();
             Console.ReadKey();
         }

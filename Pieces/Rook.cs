@@ -19,26 +19,26 @@ namespace Chess.Pieces
         {
                 PieceFinder pieceFinder = new PieceFinder(dashboard);
                 pieceFinder.FindPieceOnDashboard(name, Team_Color);
+            
+            for (int i = pieceFinder.Row_Index; i < dashboard.column_size; i++)
+            {
+                    dashboard.Board[pieceFinder.Row_Index , i].Next_Legal_Move = true;
+            }
 
-                for (int i = pieceFinder.Column_Index; i < dashboard.line_size; i++)
-                {
-                    dashboard.Board[i, pieceFinder.Row_Index].Next_Legal_Move = true;
-                }
+            for (int i = pieceFinder.Row_Index; i >= 0; i--)
+            {
+                    dashboard.Board[pieceFinder.Row_Index , i].Next_Legal_Move = true;
+            }
 
-                for (int i = pieceFinder.Column_Index; i > 0; i++)
-                {
-                    dashboard.Board[i, pieceFinder.Row_Index].Next_Legal_Move = true;
-                }
+            for (int i = pieceFinder.Column_Index; i < dashboard.line_size; i++)
+            {
+                   dashboard.Board[i, pieceFinder.Column_Index].Next_Legal_Move = true;
+            }
 
-                for (int i = pieceFinder.Row_Index; i < dashboard.line_size; i++)
-                {
-                    dashboard.Board[i, pieceFinder.Column_Index].Next_Legal_Move = true;
-                }
-
-                for (int i = pieceFinder.Row_Index; i > 0; i++)
-                {
-                    dashboard.Board[i, pieceFinder.Column_Index].Next_Legal_Move = true;
-                }  
+            for (int i = pieceFinder.Column_Index; i >= 0; i--)
+            {
+                    dashboard.Board[i , pieceFinder.Column_Index].Next_Legal_Move = true;
+            }
         }
     }
 }

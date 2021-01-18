@@ -7,7 +7,7 @@ using Chess.Pieces;
 using Chess.Game;
 namespace Chess.Board
 {
-    class Cell
+    public class Cell
     {
         public int column_number;
         public int line_number;

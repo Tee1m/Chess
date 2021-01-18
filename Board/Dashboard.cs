@@ -7,7 +7,7 @@ using Chess.Pieces;
 
 namespace Chess.Board
 {
-    class Dashboard
+    public class Dashboard
     {
         public Cell[,] Board { get; set; }
         public int column_size=0;
