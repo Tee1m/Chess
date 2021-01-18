@@ -51,8 +51,8 @@
     <Compile Include="Game\GUI\CursorOnDashboard.cs" />
     <Compile Include="Game\SetUpGame.cs" />
     <Compile Include="Game\SetUpLoadedGame.cs" />
-    <Compile Include="Game\Team\Team.cs" />
-    <Compile Include="Game\Team\TeamGenerator.cs" />
+    <Compile Include="Game\TeamFolder\Team.cs" />
+    <Compile Include="Game\TeamFolder\TeamGenerator.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\EmptyPlaceForPiece.cs" />
     <Compile Include="Pieces\King.cs" />

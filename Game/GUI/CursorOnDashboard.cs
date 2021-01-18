@@ -12,7 +12,7 @@ namespace Chess.Game.GUI
         {
             this.dashboard = dashboard;
         }
-        public Dashboard ChosingPiece()
+        public Dashboard ChosingPiece(string who_play)
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
 
@@ -28,12 +28,13 @@ namespace Chess.Game.GUI
                         else
                             dashboard.Board[i, j].SetCellColor();
 
-                        
+
                     }
                 }
-                
+
                 dashboard.ShowDashBoard();
                 key = Console.ReadKey(true);
+
                 if (key.Key == ConsoleKey.LeftArrow && row_pos > 0)
                     row_pos--;
 
@@ -46,12 +47,28 @@ namespace Chess.Game.GUI
                 else if (key.Key == ConsoleKey.UpArrow && column_pos > 0)
                     column_pos--;
 
-                else if (key.Key == ConsoleKey.Escape)
-                    ;
-                    
+                else if (key.Key == ConsoleKey.Enter)
+                {
+                    ConsoleColor color_who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), who_play);
+
+                    if (color_who_play == dashboard.Board[column_pos, row_pos].piece.Team_Color)
+                    {
+                        dashboard.Board[column_pos, row_pos].piece.MarkLegalMove(dashboard);
+                        dashboard.ShowDashBoard();
+                    }
+                }
             }
             Console.CursorVisible = true;
             return dashboard;
         }
+    }
+    class PlaceChanger
+    {
+        ConsoleColor who_play;
+        public PlaceChanger(string who_play)
+        {
+            this.who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), who_play);
+        }
+       // public void MakeMoveTo()
     }
 }

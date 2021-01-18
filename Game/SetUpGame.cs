@@ -1,21 +1,21 @@
 ﻿using Chess.Board;
-using Chess.Game.Team;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Game
 {
     class SetUpGame
     {   
-        TeamGenerator WhiteTeam;
-        TeamGenerator BlackTeam;
+        public TeamGenerator WhiteTeam;
+        public TeamGenerator BlackTeam;
         public Dashboard SetUpDashBoard;
         public SetUpGame() { }
-        public SetUpGame(string color_of_first_team, string color_of_second_team)
+        public SetUpGame(TeamGenerator first_team, TeamGenerator second_team)
         {
-            WhiteTeam = new TeamGenerator(color_of_first_team);
-            BlackTeam = new TeamGenerator(color_of_second_team);
+            WhiteTeam = first_team;
+            BlackTeam = second_team;
             SetUpDashBoard = new Dashboard(8,8);   
         }
-        public virtual Cell[,] SetUpDashboard()//TODO
+        public virtual Cell[,] SetUpDashboard()
         {
             Cell[] tab = new Cell[8];
             for (int j = 0; j < 8; j++)
@@ -32,14 +32,12 @@ namespace Chess.Game
             tab = BlackTeam.FirstLineFormationPawnsRow(tab);
             SetUpRow(tab,1);
             return SetUpDashBoard.Board;
-
-        }//TODO
+        }
         void SetUpRow(Cell[]tab,int row)
         {
             for (int i = 0; i < 8; i++)
             {
                 SetUpDashBoard.Board[row,i].piece=tab[i].piece;
-                //SetUpDashBoard.GameBoard[row, i].SetCellColor();
             }
         }
     }

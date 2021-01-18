@@ -35,7 +35,11 @@ namespace Chess.Board
                 for (int j = 0; j < line_size; j++)
                 {
                     Console.CursorSize = 10;
-                    Console.BackgroundColor = Board[i, j].ColorOfCell;
+                    if (Board[i, j].Next_Legal_Move == true)
+                        Console.BackgroundColor = ConsoleColor.Cyan;
+                    else
+                        Console.BackgroundColor = Board[i, j].ColorOfCell;
+
                     Console.ForegroundColor = Board[i, j].piece.Team_Color;
                     Console.Write(Board[i,j].piece.Piece_Index);
                 }

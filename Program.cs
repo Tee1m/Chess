@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Chess.Board;
 using Chess.Game;
+using Chess.Game.TeamFolder;
 
 namespace Chess
 {
@@ -12,9 +13,10 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            //TODO
-            SetUpGame SetGame = new SetUpGame("White", "Black");
-            //SetUpGame SetGame = new SetUpLoadedGame();
+            TeamGenerator FirstTeam = new TeamGenerator("White");
+            TeamGenerator SecondTeam = new TeamGenerator("Black");
+
+            SetUpGame SetGame = new SetUpGame(FirstTeam , SecondTeam);
             ChessGame Chess = new ChessGame(SetGame);
             Chess.StartGame();
 

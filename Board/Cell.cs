@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Pieces;
-
+using Chess.Game;
 namespace Chess.Board
 {
     class Cell
@@ -23,14 +23,6 @@ namespace Chess.Board
                 if (it_is_busy == false)
                 {
                     next_legal_move = value;
-                }
-                else if(it_is_busy == true)
-                {
-                    //  if (piece.Team_Color!=)
-                    //{
-                    //    next_legal_move = value;
-                    //}
-                    //TODO Klasa gracz lub kolejka. Będzie wskazywać kogo kolej jest oraz przekazywać kolor do właściwości
                 }
             }
         }

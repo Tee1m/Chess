@@ -1,5 +1,5 @@
 ﻿using Chess.Pieces;
-namespace Chess.Game.Team
+namespace Chess.Game.TeamFolder
 {
     class Team
     {
@@ -19,6 +19,7 @@ namespace Chess.Game.Team
         public Pawn pawn_six;
         public Pawn pawn_seven;
         public Pawn pawn_eight;
+        public string team_color;
 
         public Team(string team_color)
         {
@@ -38,6 +39,7 @@ namespace Chess.Game.Team
             pawn_six = new Pawn(team_color);
             pawn_seven = new Pawn(team_color);
             pawn_eight = new Pawn(team_color);
+            this.team_color = team_color;        
         }
     }
 }
