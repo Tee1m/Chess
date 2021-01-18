@@ -23,8 +23,8 @@ namespace Chess.Board
                     {
                         if(team_color == dashboard.Board[i , j].piece.Team_Color)
                         {
-                            column_index = i;
-                            row_index = j;
+                            column_index = i - 1;
+                            row_index = j + 1;
                         }
                     }
                 }

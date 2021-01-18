@@ -21,5 +21,6 @@ namespace Chess.Pieces
             this.team_color = Console.ForegroundColor = ConsoleColor.DarkGray;
         }
         public abstract void MarkLegalMove(Dashboard dashboard);
+        //TODO change implementation of all pieces !!!! without knight. Knight is good.
     }
 }

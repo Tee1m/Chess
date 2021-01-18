@@ -11,7 +11,6 @@ namespace Chess.Board
     {
         public int column_number;
         public int line_number;
-        bool it_is_busy;
         bool next_legal_move;
         public Piece piece;
         public ConsoleColor color_of_cell;
@@ -20,7 +19,7 @@ namespace Chess.Board
             get => next_legal_move;
             set
             {
-                if (it_is_busy == false)
+                if (piece is EmptyPlaceForPiece)
                 {
                     next_legal_move = value;
                 }
@@ -35,7 +34,6 @@ namespace Chess.Board
             CellColorEditor CellVisEdit = new CellColorEditor();
             this.column_number = column_number;
             this.line_number = line_number;
-            this.it_is_busy = false;
             this.next_legal_move = false;
             color_of_cell = CellVisEdit.ColorizeTheCell(column_number, line_number);
             piece = new EmptyPlaceForPiece();

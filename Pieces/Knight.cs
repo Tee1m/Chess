@@ -21,31 +21,45 @@ namespace Chess.Pieces
             PieceFinder pieceFinder = new PieceFinder(dashboard);
             pieceFinder.FindPieceOnDashboard(name, Team_Color);
 
-            if (pieceFinder.Row_Index + 1 <= dashboard.line_size && pieceFinder.Column_Index + 2 <= dashboard.column_size)
-                dashboard.Board[pieceFinder.Row_Index + 1 , pieceFinder.Column_Index + 2 ].Next_Legal_Move = true;
-            
-            if (pieceFinder.Row_Index > 0 && pieceFinder.Column_Index + 2 <= dashboard.column_size)
-                dashboard.Board[pieceFinder.Row_Index - 1, pieceFinder.Column_Index + 2].Next_Legal_Move = true;
-            
-            if (pieceFinder.Row_Index + 1 <= dashboard.line_size && pieceFinder.Column_Index - 1 > 0)
-                dashboard.Board[pieceFinder.Row_Index + 1, pieceFinder.Column_Index - 2 ].Next_Legal_Move = true;
-
-            if (pieceFinder.Row_Index  > 0 && pieceFinder.Column_Index - 1 > 0)
-                dashboard.Board[pieceFinder.Row_Index - 1 , pieceFinder.Column_Index - 2 ].Next_Legal_Move = true;
-            
-            if (pieceFinder.Row_Index + 2 <= pieceFinder.Row_Index && pieceFinder.Column_Index +1 < dashboard.column_size)
-                dashboard.Board[pieceFinder.Row_Index + 2 , pieceFinder.Column_Index + 1].Next_Legal_Move = true;
-
-            if (pieceFinder.Row_Index + 2 < dashboard.line_size && pieceFinder.Column_Index > 0)
-                dashboard.Board[pieceFinder.Row_Index + 2, pieceFinder.Column_Index - 1 ].Next_Legal_Move = true;
-
-            if (pieceFinder.Row_Index - 1 > 0 && pieceFinder.Column_Index + 1 < dashboard.column_size)
-                dashboard.Board[pieceFinder.Row_Index - 2, pieceFinder.Column_Index + 1].Next_Legal_Move = true;
-
             if (pieceFinder.Row_Index - 1 > 0 && pieceFinder.Column_Index > 0)
+            {
                 dashboard.Board[pieceFinder.Row_Index - 2, pieceFinder.Column_Index - 1].Next_Legal_Move = true;
+            }
 
+            if (pieceFinder.Row_Index + 2 < dashboard.column_size && pieceFinder.Column_Index + 1 < dashboard.column_size)
+            {
+                dashboard.Board[pieceFinder.Row_Index + 2, pieceFinder.Column_Index + 1].Next_Legal_Move = true;
+            }
 
+            if (pieceFinder.Row_Index - 1 > 0 && pieceFinder.Column_Index < dashboard.column_size - 1)
+            {
+                dashboard.Board[pieceFinder.Row_Index - 2, pieceFinder.Column_Index + 1].Next_Legal_Move = true;
+            }
+
+            if (pieceFinder.Row_Index + 2 < dashboard.column_size && pieceFinder.Column_Index > 0)
+            {
+                dashboard.Board[pieceFinder.Row_Index + 2, pieceFinder.Column_Index - 1].Next_Legal_Move = true;
+            }
+            ////
+            if (pieceFinder.Row_Index + 1 < dashboard.column_size && pieceFinder.Column_Index -1 > 0)
+            {
+                dashboard.Board[pieceFinder.Row_Index + 1, pieceFinder.Column_Index - 2].Next_Legal_Move = true;
+            }
+
+            if (pieceFinder.Row_Index > 0 && pieceFinder.Column_Index -1 > 0)
+            {
+                dashboard.Board[pieceFinder.Row_Index - 1, pieceFinder.Column_Index - 2].Next_Legal_Move = true;
+            }
+
+            if (pieceFinder.Row_Index + 1 < dashboard.column_size && pieceFinder.Column_Index + 2 < dashboard.column_size)
+            {
+                dashboard.Board[pieceFinder.Row_Index + 1, pieceFinder.Column_Index + 2].Next_Legal_Move = true;
+            }
+
+            if (pieceFinder.Row_Index > 0 && pieceFinder.Column_Index + 2 < dashboard.column_size)
+            {
+                dashboard.Board[pieceFinder.Row_Index - 1, pieceFinder.Column_Index + 2].Next_Legal_Move = true;
+            }
         }
     }
 }

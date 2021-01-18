@@ -62,13 +62,5 @@ namespace Chess.Game.GUI
             return dashboard;
         }
     }
-    class PlaceChanger
-    {
-        ConsoleColor who_play;
-        public PlaceChanger(string who_play)
-        {
-            this.who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), who_play);
-        }
-       // public void MakeMoveTo()
-    }
+    //TODO PlaceChanger class
 }
