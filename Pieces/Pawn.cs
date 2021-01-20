@@ -1,22 +1,23 @@
-﻿using Chess.Board;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Chess.Board;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Pieces
 {
     class Pawn:Piece
     {
-        public Pawn(string team_color)
+        public Pawn(string Name, string PieceSignature, TeamColor Color) : base(Name, PieceSignature, Color)
         {
-            this.team_color = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), team_color);
-            this.name = "Pawn";
-            this.piece_index = "P";
+            this.Name = Name;
+            this.PieceSignature = PieceSignature;
+            this.Color = Color;
         }
 
-        public override void MarkLegalMove(Dashboard dashboard)
+        public override void GenerateLegalMove(Dashboard Board)
         {
            //TODO implementacja pionka
         }

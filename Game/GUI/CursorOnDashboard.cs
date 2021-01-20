@@ -6,59 +6,62 @@ namespace Chess.Game.GUI
 {
     class CursorOnDashboard
     {
-        private int column_pos = 4;
-        private int row_pos = 4;
-        Dashboard dashboard;
-        public CursorOnDashboard(Dashboard dashboard)
-        {
-            this.dashboard = dashboard;
-        }
-        public Dashboard ChosingPiece(Team team)
-        {
-            ConsoleKeyInfo key = new ConsoleKeyInfo();
+        private int ColumnPosittion = 4;
+        private int RowPosittion = 4;
+        Dashboard Board;
 
+        public CursorOnDashboard(Dashboard Board)
+        {
+            this.Board = Board;
+        }
+
+        public Dashboard ChosingPiece(Team Team)
+        {
+            ConsoleKeyInfo Key = new ConsoleKeyInfo();
             Console.CursorVisible = false;
-            while (key.Key != ConsoleKey.Escape)
+            
+            while (Key.Key != ConsoleKey.Escape)
             {
-                for (int i = 0; i < dashboard.column_size; i++)
+                for (int i = 0; i < 8; i++)
                 {
-                    for (int j = 0; j < dashboard.line_size; j++)
+                    for (int j = 0; j < 8; j++)
                     {
-                        if (i == column_pos && j == row_pos)
-                            dashboard.Board[i, j].color_of_cell = ConsoleColor.DarkYellow;
+                        if (i == ColumnPosittion && j == RowPosittion)
+                            Board.Field[i, j].Color = CellColor.DarkYellow;
                         else
-                            dashboard.Board[i, j].SetCellColor();
+                            Board.Field[i, j].SetCellColor();
                     }
                 }
 
-                dashboard.ShowDashBoard();
-                key = Console.ReadKey(true);
+                Board.ShowDashBoard();
+                Key = Console.ReadKey(true);
 
-                if (key.Key == ConsoleKey.LeftArrow && row_pos > 0)
-                    row_pos--;
+                if (Key.Key == ConsoleKey.LeftArrow && RowPosittion > 0)
+                    RowPosittion--;
 
-                else if (key.Key == ConsoleKey.RightArrow && row_pos < dashboard.line_size - 1)
-                    row_pos++;
+                else if (Key.Key == ConsoleKey.RightArrow && RowPosittion < 8 - 1)
+                    RowPosittion++;
 
-                else if (key.Key == ConsoleKey.DownArrow && column_pos < dashboard.column_size - 1)
-                    column_pos++;
+                else if (Key.Key == ConsoleKey.DownArrow && ColumnPosittion < 8 - 1)
+                    ColumnPosittion++;
 
-                else if (key.Key == ConsoleKey.UpArrow && column_pos > 0)
-                    column_pos--;
+                else if (Key.Key == ConsoleKey.UpArrow && ColumnPosittion > 0)
+                    ColumnPosittion--;
 
-                else if (key.Key == ConsoleKey.Enter)
+                else if (Key.Key == ConsoleKey.Enter)
                 {
-                    ConsoleColor color_who_play = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), team.team_color);
+                    ConsoleColor color_who_play = (ConsoleColor)Team.Color;
 
-                    if (color_who_play == dashboard.Board[column_pos, row_pos].piece.Team_Color)
+                    if (color_who_play == (ConsoleColor)Board.Field[ColumnPosittion, RowPosittion].Piece.Color)
                     {
-                        dashboard.Board[column_pos, row_pos].piece.MarkLegalMove(dashboard);
-                        dashboard.ShowDashBoard();
+                        Board.Field[ColumnPosittion, RowPosittion].Piece.GenerateLegalMove(Board);
+                        Board.ShowDashBoard();
                     }
                 }
             }
+
             Console.CursorVisible = true;
-            return dashboard;
+            return Board;
         }
     }
     //TODO PlaceChanger class

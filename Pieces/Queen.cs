@@ -4,45 +4,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Board;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Pieces
 {
-    class Queen : Piece
+    public class Queen : Piece
     {
-        public Queen(string team_color)
+        public Queen(string Name, string PieceSignature, TeamColor Color) : base(Name, PieceSignature, Color)
         {
-            this.team_color = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), team_color);
-            this.name = "Queen";
-            this.piece_index = "Q";
+            this.Name = Name;
+            this.PieceSignature = PieceSignature;
+            this.Color = Color;
         }
 
-        public override void MarkLegalMove(Dashboard dashboard)
+        public override void GenerateLegalMove(Dashboard Board)
         {
-            PieceFinder pieceFinder = new PieceFinder(dashboard);
-            pieceFinder.FindPieceOnDashboard(name, Team_Color);
-            //TODO Implementacja przemieszczania się
+            PieceFinder pieceFinder = new PieceFinder(Board);
+            pieceFinder.FindPieceOnDashboard(Name, Color);
 
-           for (int i = pieceFinder.Row_Index; i < dashboard.column_size; i++)
-           {
-                    dashboard.Board[pieceFinder.Row_Index, i].Next_Legal_Move = true;
-           }
+            for (int i = pieceFinder.RowIndex; i < 8; i++)
+            {
+                Board.Field[pieceFinder.RowIndex, i].SetNextLegalMove = true;
+            }
 
-           for (int i = pieceFinder.Row_Index ; i >= 0; i--)
-           {
-                    dashboard.Board[pieceFinder.Row_Index, i].Next_Legal_Move = true;
-           }
+            for (int i = pieceFinder.RowIndex; i >= 0; i--)
+            {
+                Board.Field[pieceFinder.RowIndex, i].SetNextLegalMove = true;
+            }
 
-           for (int i = pieceFinder.Column_Index; i < dashboard.line_size; i++)
-           {
-                    dashboard.Board[i, pieceFinder.Column_Index].Next_Legal_Move = true;
-           }
-            
-           for (int i = pieceFinder.Column_Index ; i >= 0; i--)
-           { 
-                    dashboard.Board[i, pieceFinder.Column_Index].Next_Legal_Move = true;
-           }
-            
+            for (int i = pieceFinder.ColumnIndex; i < 8; i++)
+            {
+                Board.Field[i, pieceFinder.ColumnIndex].SetNextLegalMove = true;
+            }
 
+            for (int i = pieceFinder.ColumnIndex; i >= 0; i--)
+            {
+                Board.Field[i, pieceFinder.ColumnIndex].SetNextLegalMove = true;
+            }
+
+            if (pieceFinder.RowIndex == pieceFinder.ColumnIndex)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if (pieceFinder.RowIndex + i < 8 && pieceFinder.ColumnIndex + i < 8)
+                    {
+                        Board.Field[pieceFinder.RowIndex + i, pieceFinder.ColumnIndex + i].SetNextLegalMove = true;
+                    }
+
+                    if (pieceFinder.RowIndex - i >= 0 && pieceFinder.RowIndex - i >= 0)
+                    {
+                        Board.Field[pieceFinder.RowIndex - i, pieceFinder.ColumnIndex - i].SetNextLegalMove = true;
+                    }
+                }
+            }
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (pieceFinder.ColumnIndex + i < 8 && pieceFinder.RowIndex - i >= 0)
+                {
+                    Board.Field[pieceFinder.RowIndex - i, pieceFinder.ColumnIndex + i].SetNextLegalMove = true;
+
+                }
+
+                if (pieceFinder.RowIndex + i < 8 && pieceFinder.ColumnIndex - i >= 0)
+                {
+                    Board.Field[pieceFinder.RowIndex + i, pieceFinder.ColumnIndex - i].SetNextLegalMove = true;
+
+                }
+
+                if (pieceFinder.RowIndex - i >= 0 && pieceFinder.ColumnIndex - i >= 0)
+                {
+                    Board.Field[pieceFinder.RowIndex - i, pieceFinder.ColumnIndex - i].SetNextLegalMove = true;
+                }
+
+                if (pieceFinder.RowIndex + i < 8 && pieceFinder.ColumnIndex + i < 8)
+                {
+                    Board.Field[pieceFinder.RowIndex + i, pieceFinder.ColumnIndex + i].SetNextLegalMove = true;
+                }
+            }
         }
     }
 }

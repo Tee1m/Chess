@@ -4,40 +4,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Board;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Pieces
 {
-    class King : Piece
+    public class King : Piece
     {
-        public King(string team_color)
+        public King(string Name, string PieceSignature, TeamColor Color) : base(Name, PieceSignature, Color)
         {
-            this.team_color = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), team_color);
-            this.name = "King";
-            this.piece_index = "K";
+            this.Name = Name;
+            this.PieceSignature = PieceSignature;
+            this.Color = Color;
         }
-        public override void MarkLegalMove(Dashboard dashboard)
+
+        public override void GenerateLegalMove(Dashboard Board)
         {
-            PieceFinder pieceFinder = new PieceFinder(dashboard);
-            pieceFinder.FindPieceOnDashboard(name, Team_Color);
+            PieceFinder pieceFinder = new PieceFinder(Board);
+            pieceFinder.FindPieceOnDashboard(Name, Color);
 
-            if(pieceFinder.Row_Index < dashboard.line_size)
-                dashboard.Board[pieceFinder.Column_Index , pieceFinder.Row_Index + 1].Next_Legal_Move = true;
-            
-            if (pieceFinder.Row_Index < dashboard.column_size)
-                dashboard.Board[pieceFinder.Column_Index + 1, pieceFinder.Row_Index].Next_Legal_Move = true;
+            if(pieceFinder.ColumnIndex < 7)
+                Board.Field[pieceFinder.RowIndex, pieceFinder.ColumnIndex + 1].SetNextLegalMove = true;
 
-            if (pieceFinder.Column_Index < dashboard.column_size && pieceFinder.Row_Index < dashboard.line_size)
-                dashboard.Board[pieceFinder.Column_Index + 1, pieceFinder.Row_Index + 1].Next_Legal_Move = true;
+            if(pieceFinder.RowIndex < 7)
+                Board.Field[pieceFinder.RowIndex + 1, pieceFinder.ColumnIndex].SetNextLegalMove = true;
 
-            if (pieceFinder.Column_Index < dashboard.column_size && pieceFinder.Row_Index > 0)
-                dashboard.Board[pieceFinder.Column_Index + 1, pieceFinder.Row_Index - 1].Next_Legal_Move = true;
+            if(pieceFinder.RowIndex > 0)
+                Board.Field[pieceFinder.RowIndex - 1, pieceFinder.ColumnIndex].SetNextLegalMove = true;
 
-            if (pieceFinder.Column_Index > 0 && pieceFinder.Row_Index < dashboard.line_size)
-                dashboard.Board[pieceFinder.Column_Index - 1, pieceFinder.Row_Index + 1].Next_Legal_Move = true;
+            if (pieceFinder.ColumnIndex > 0)
+                Board.Field[pieceFinder.RowIndex, pieceFinder.ColumnIndex - 1].SetNextLegalMove = true;
 
-            if (pieceFinder.Column_Index > 0 && pieceFinder.Row_Index > 0)
-                dashboard.Board[pieceFinder.Column_Index - 1, pieceFinder.Row_Index - 1].Next_Legal_Move = true;      
+            if(pieceFinder.RowIndex < 7 && pieceFinder.ColumnIndex < 7)
+                Board.Field[pieceFinder.RowIndex + 1, pieceFinder.ColumnIndex + 1].SetNextLegalMove = true;
+
+            if (pieceFinder.RowIndex > 0 && pieceFinder.ColumnIndex > 0)
+                Board.Field[pieceFinder.RowIndex - 1, pieceFinder.ColumnIndex - 1].SetNextLegalMove = true;
+
+            if (pieceFinder.RowIndex < 7 && pieceFinder.ColumnIndex > 0)
+                Board.Field[pieceFinder.RowIndex + 1, pieceFinder.ColumnIndex - 1].SetNextLegalMove = true;
+
+            if (pieceFinder.RowIndex > 0 && pieceFinder.ColumnIndex < 7)
+                Board.Field[pieceFinder.RowIndex - 1, pieceFinder.ColumnIndex + 1].SetNextLegalMove = true;
         }
+        //TODO Fix implementation of movement
 
     }
 }

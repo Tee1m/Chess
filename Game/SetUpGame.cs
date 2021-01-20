@@ -7,38 +7,41 @@ namespace Chess.Game
     {   
         public TeamGenerator WhiteTeam;
         public TeamGenerator BlackTeam;
-        public Dashboard SetUpDashBoard;
-        public SetUpGame() { }
-        public SetUpGame(TeamGenerator first_team, TeamGenerator second_team)
+        public Dashboard SetUpBoard;
+
+        public SetUpGame(TeamGenerator FirstTeam, TeamGenerator SecondTeam)
         {
-            WhiteTeam = first_team;
-            BlackTeam = second_team;
-            SetUpDashBoard = new Dashboard(8,8);   
+            WhiteTeam = FirstTeam;
+            BlackTeam = SecondTeam;
+            SetUpBoard = new Dashboard();   
         }
-        public virtual Cell[,] SetUpDashboard()
+
+        public Cell[,] SetUpDashboard()
         {
             Cell[] tab = new Cell[8];
             for (int j = 0; j < 8; j++)
             {
                 tab[j] = new Cell(j,0);
             }
+
             tab = WhiteTeam.TeamLineFormationKingRow(tab);
-            SetUpRow(tab,7);
+            SetUpRow(tab, 7);
             tab = WhiteTeam.FirstLineFormationPawnsRow(tab);
-            SetUpRow(tab,6);
+            SetUpRow(tab, 6);
             
             tab = BlackTeam.TeamLineFormationKingRow(tab);
-            SetUpRow(tab,0);
+            SetUpRow(tab, 0);
             tab = BlackTeam.FirstLineFormationPawnsRow(tab);
-            SetUpRow(tab,1);
-            return SetUpDashBoard.Board;
+            SetUpRow(tab, 1);
+
+            return SetUpBoard.Field;
         }
+
         void SetUpRow(Cell[]tab,int row)
         {
             for (int i = 0; i < 8; i++)
             {
-                SetUpDashBoard.Board[row,i].piece=tab[i].piece;
-                
+                SetUpBoard.Field[row, i].Piece=tab[i].Piece;
             }
         }
     }

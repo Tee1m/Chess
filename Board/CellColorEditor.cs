@@ -4,19 +4,19 @@ namespace Chess.Board
 {
     class CellColorEditor
     {
-        public ConsoleColor ColorizeTheCell(int index_of_column, int index_of_line)
+        public CellColor ColorizeTheCell(int ColumnIndex, int RowIndex)
         {
-            if (index_of_column == index_of_line)
+            if (ColumnIndex == RowIndex)
             {
-                return ConsoleColor.Blue;
+                return CellColor.Blue;
             }
-            else if ((index_of_column - index_of_line) % 2 == 0)
+            else if ((ColumnIndex - RowIndex) % 2 == 0)
             {
-                return ConsoleColor.Blue;
+                return CellColor.Blue;
             }
             else
             {
-                return ConsoleColor.DarkBlue;
+                return CellColor.DarkBlue;
             }
         }  
     }

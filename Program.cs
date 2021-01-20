@@ -13,14 +13,12 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            TeamGenerator FirstTeam = new TeamGenerator("White");
-            TeamGenerator SecondTeam = new TeamGenerator("Black");
+            TeamGenerator FirstTeam = new TeamGenerator(TeamColor.White);
+            TeamGenerator SecondTeam = new TeamGenerator(TeamColor.Black);
 
             SetUpGame SetGame = new SetUpGame(FirstTeam , SecondTeam);
             ChessGame Chess = new ChessGame(SetGame);
             Chess.StartGame();
-
-            
         }
         
         static void GameSetUp(int window_with,int window_heigh)

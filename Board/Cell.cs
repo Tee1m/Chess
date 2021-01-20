@@ -1,48 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Pieces;
-using Chess.Game;
+using Chess.Game.TeamFolder;
+
 namespace Chess.Board
 {
     public class Cell
     {
-        public int column_number;
-        public int line_number;
-        bool next_legal_move;
-        public Piece piece;
-        public ConsoleColor color_of_cell;
-        public bool Next_Legal_Move
+        public int ColumnIndex;
+        public int RowIndex;
+        public Piece Piece;
+        public CellColor Color;
+
+        public bool NextLegalMove { get; private set; }
+        public bool SetNextLegalMove
         {
-            get => next_legal_move;
             set
             {
-                if (piece is EmptyPlaceForPiece)
+                if (Piece is EmptyPlaceForPiece)
                 {
-                    next_legal_move = value;
+                    NextLegalMove = value;
                 }
             }
         }
-        public ConsoleColor ColorOfCell
-        {
-            get => color_of_cell;
+
+        public Cell(int ColumnIndex, int RowIndex)
+        { 
+            this.ColumnIndex = ColumnIndex;
+            this.RowIndex = RowIndex;
+            this.NextLegalMove = false;
+            Piece = new EmptyPlaceForPiece(" ", " ", TeamColor.NoColor);
+            CellColorEditor FieldColorEditor = new CellColorEditor();
+            Color = FieldColorEditor.ColorizeTheCell(ColumnIndex, RowIndex); 
         }
-        public Cell(int column_number, int line_number)
-        {
-            CellColorEditor CellVisEdit = new CellColorEditor();
-            this.column_number = column_number;
-            this.line_number = line_number;
-            this.next_legal_move = false;
-            color_of_cell = CellVisEdit.ColorizeTheCell(column_number, line_number);
-            piece = new EmptyPlaceForPiece();
-        }
+
         public void SetCellColor()
         {
-            CellColorEditor CellVisEdit = new CellColorEditor();
-            color_of_cell = CellVisEdit.ColorizeTheCell(column_number, line_number);
+            CellColorEditor FieldColorEditor = new CellColorEditor();
+            Color = FieldColorEditor.ColorizeTheCell(ColumnIndex, RowIndex);
         }
-       
     }
 }

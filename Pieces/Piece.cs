@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Board;
+using Chess.Game.TeamFolder;
+
 namespace Chess.Pieces
 {
     public abstract class Piece
     {
-        public string name;
-        protected bool first_move = true;
-        protected string piece_index;
-        protected ConsoleColor team_color;
-        public ConsoleColor Team_Color { get => team_color; }
-        public string Piece_Index { get => piece_index; }
-        public Piece()
+        public string Name;
+        protected bool FirstMoveExecuted = false;
+        public string PieceSignature { get; protected set; }
+        public TeamColor Color { get; protected set; }
+
+        public Piece(string Name, string PieceSignature, TeamColor Color)
         {
-            this.name = " ";
-            this.piece_index = " ";
-            this.team_color = Console.ForegroundColor = ConsoleColor.DarkGray;
+            this.Name = Name;
+            this.PieceSignature = PieceSignature;
+            this.Color = Color;
         }
-        public abstract void MarkLegalMove(Dashboard dashboard);
-        //TODO change implementation of all pieces !!!! without knight. Knight is good.
+
+        public abstract void GenerateLegalMove(Dashboard Board);
     }
 }
+

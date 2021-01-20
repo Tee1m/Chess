@@ -4,38 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Chess.Board;
+
 namespace Chess.Game.TeamFolder
 {
     class TeamGenerator:Team
     {
-        //Team team;
-        //public TeamGenerator(string team_color) : base(team_color) { }
-        public TeamGenerator(string team_color):base(team_color) { }
-
+        public TeamGenerator(TeamColor Color):base(Color) { }
 
         public Cell[] TeamLineFormationKingRow(Cell[] RowFormation)
         {
-            
-            RowFormation[0].piece = left_rook_piece;
-            RowFormation[1].piece = left_knight_piece;
-            RowFormation[2].piece = left_bishop_piece;
-            RowFormation[3].piece = queen_piece;
-            RowFormation[4].piece = king_piece;
-            RowFormation[5].piece = right_bishop_piece;
-            RowFormation[6].piece = right_knight_piece;
-            RowFormation[7].piece = right_rook_piece;
+            RowFormation[0].Piece = LeftRookPiece;
+            RowFormation[1].Piece = LeftKnightPiece;
+            RowFormation[2].Piece = LeftBishopPiece;
+            RowFormation[3].Piece = QueenPiece;
+            RowFormation[4].Piece = KingPiece;
+            RowFormation[5].Piece = RightBishopPiece;
+            RowFormation[6].Piece = RightKnightPiece;
+            RowFormation[7].Piece = RightRookPiece;
             return RowFormation;
         }
+
         public Cell[] FirstLineFormationPawnsRow(Cell[] RowFormation)
         {
-            RowFormation[0].piece = pawn_one;
-            RowFormation[1].piece = pawn_two;
-            RowFormation[2].piece = pawn_three;
-            RowFormation[3].piece = pawn_four;
-            RowFormation[4].piece = pawn_five;
-            RowFormation[5].piece = pawn_six;
-            RowFormation[6].piece = pawn_seven;
-            RowFormation[7].piece = pawn_eight;
+            RowFormation[0].Piece = PawnOne;
+            RowFormation[1].Piece = PawnTwo;
+            RowFormation[2].Piece = PawnThree;
+            RowFormation[3].Piece = PawnFour;
+            RowFormation[4].Piece = PawnFive;
+            RowFormation[5].Piece = PawnSix;
+            RowFormation[6].Piece = PawnSeven;
+            RowFormation[7].Piece = PawnEight;
             return RowFormation;
         }
     }

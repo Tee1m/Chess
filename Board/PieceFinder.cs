@@ -1,30 +1,31 @@
 ﻿using System;
+using Chess.Game.TeamFolder;
 
 namespace Chess.Board
 {
     class PieceFinder
     {
-        private int column_index;
-        private int row_index;
-        public int Column_Index { get => column_index; }
-        public int Row_Index { get => row_index; }
-        Dashboard dashboard;
-        public PieceFinder(Dashboard board)
+        public int ColumnIndex { get; private set; }
+        public int RowIndex { get; private set; }
+        Dashboard Board;
+
+        public PieceFinder(Dashboard Board)
         {
-            this.dashboard = board;
+            this.Board = Board;
         }
-        public void FindPieceOnDashboard(string name, ConsoleColor team_color)
+
+        public void FindPieceOnDashboard(string Name, TeamColor Color)
         {
-            for (int i = 0; i < dashboard.column_size; i++)
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < dashboard.line_size; j++)
+                for (int j = 0; j < 8; j++)
                 {
-                    if(name == dashboard.Board[i , j].piece.name)
+                    if(Name == Board.Field[i, j].Piece.Name)
                     {
-                        if(team_color == dashboard.Board[i , j].piece.Team_Color)
+                        if(Color == Board.Field[i, j].Piece.Color)
                         {
-                            column_index = j;
-                            row_index = i;
+                            ColumnIndex = j;
+                            RowIndex = i;
                         }
                     }
                 }

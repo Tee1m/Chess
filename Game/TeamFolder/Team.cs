@@ -1,45 +1,46 @@
 ﻿using Chess.Pieces;
+
 namespace Chess.Game.TeamFolder
 {
     class Team
     {
-        public King king_piece;
-        public Queen queen_piece;
-        public Bishop left_bishop_piece;
-        public Bishop right_bishop_piece;
-        public Rook left_rook_piece;
-        public Rook right_rook_piece;
-        public Knight left_knight_piece;
-        public Knight right_knight_piece;
-        public Pawn pawn_one;
-        public Pawn pawn_two;
-        public Pawn pawn_three;
-        public Pawn pawn_four;
-        public Pawn pawn_five;
-        public Pawn pawn_six;
-        public Pawn pawn_seven;
-        public Pawn pawn_eight;
-        public string team_color;
+        public King KingPiece;
+        public Queen QueenPiece;
+        public Bishop LeftBishopPiece;
+        public Bishop RightBishopPiece;
+        public Rook LeftRookPiece;
+        public Rook RightRookPiece;
+        public Knight LeftKnightPiece;
+        public Knight RightKnightPiece;
+        public Pawn PawnOne;
+        public Pawn PawnTwo;
+        public Pawn PawnThree;
+        public Pawn PawnFour;
+        public Pawn PawnFive;
+        public Pawn PawnSix;
+        public Pawn PawnSeven;
+        public Pawn PawnEight;
+        public TeamColor Color;
 
-        public Team(string team_color)
+        public Team(TeamColor Color)
         {
-            king_piece = new King(team_color);
-            queen_piece = new Queen(team_color);
-            left_bishop_piece = new Bishop(team_color);
-            right_bishop_piece = new Bishop(team_color);
-            left_rook_piece = new Rook(team_color);
-            right_rook_piece = new Rook(team_color);
-            left_knight_piece = new Knight(team_color);
-            right_knight_piece = new Knight(team_color);
-            pawn_one = new Pawn(team_color);
-            pawn_two = new Pawn(team_color);
-            pawn_three = new Pawn(team_color);
-            pawn_four = new Pawn(team_color);
-            pawn_five = new Pawn(team_color);
-            pawn_six = new Pawn(team_color);
-            pawn_seven = new Pawn(team_color);
-            pawn_eight = new Pawn(team_color);
-            this.team_color = team_color;        
+            KingPiece = new King("King", "K", Color);
+            QueenPiece = new Queen("Queen", "Q", Color);
+            LeftBishopPiece = new Bishop("LeftBishop", "B", Color);
+            RightBishopPiece = new Bishop("RightBishop", "B", Color);
+            LeftRookPiece = new Rook("LeftRook", "R", Color);
+            RightRookPiece = new Rook("RightRook", "R", Color);
+            LeftKnightPiece = new Knight("LeftKnigh" ,"K", Color);
+            RightKnightPiece = new Knight("RightKnight" ,"K", Color);
+            PawnOne = new Pawn("PawnOne", "P", Color);
+            PawnTwo = new Pawn("PawnTwo", "P", Color);
+            PawnThree = new Pawn("PawnThree", "P", Color);
+            PawnFour = new Pawn("PawnFour", "P", Color);
+            PawnFive = new Pawn("PawnFive", "P", Color);
+            PawnSix = new Pawn("PawnSix", "P", Color);
+            PawnSeven = new Pawn("PawnSeven", "P", Color);
+            PawnEight = new Pawn("PawnEight", "P", Color);
+            this.Color = Color;        
         }
     }
 }

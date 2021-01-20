@@ -44,13 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board\Cell.cs" />
+    <Compile Include="Board\CellColor.cs" />
     <Compile Include="Board\CellColorEditor.cs" />
     <Compile Include="Board\Dashboard.cs" />
     <Compile Include="Board\PieceFinder.cs" />
     <Compile Include="Game\ChessGame.cs" />
     <Compile Include="Game\GUI\CursorOnDashboard.cs" />
     <Compile Include="Game\SetUpGame.cs" />
-    <Compile Include="Game\SetUpLoadedGame.cs" />
     <Compile Include="Game\TeamFolder\Team.cs" />
     <Compile Include="Game\TeamFolder\TeamGenerator.cs" />
     <Compile Include="Pieces\Bishop.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="Pieces\Piece.cs" />
     <Compile Include="Pieces\Queen.cs" />
     <Compile Include="Pieces\Rook.cs" />
+    <Compile Include="Game\TeamFolder\TeamColor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
